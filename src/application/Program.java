@@ -2,9 +2,10 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import entities.Product;
-import util.PriceUpdate;
+import util.UpperCaseName;
 
 public class Program {
 
@@ -22,6 +23,14 @@ public class Program {
 		list.forEach(p -> {p.setPrice(p.getPrice() * factor);});
 
 		list.forEach(System.out::println);
+		
+		//convert a lista para stream e depois retorna (new...) uma lista somente com os nomes
+		//map pega cada um item da lista e aplica o q esta dentro dele
+		List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList());
+		
+		System.out.println();
+		
+		names.forEach(System.out::println);
 
 	}
 }
