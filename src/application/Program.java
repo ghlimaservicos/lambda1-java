@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import entities.Product;
+import model.services.ProductService;
 import util.UpperCaseName;
 
 public class Program {
@@ -31,6 +32,11 @@ public class Program {
 		System.out.println();
 		
 		names.forEach(System.out::println);
+		
+		ProductService ps = new ProductService();
+		double sum = ps.filteredSum(list, p -> p.getName().charAt(0) == 'T');
+		
+		System.out.println("sum = " + String.format("%.2f", sum));
 
 	}
 }
